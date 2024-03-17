@@ -6,10 +6,11 @@ from globals import *
 
 
 class App:
-    def __init__(self, caption: str = '') -> None:
+    def __init__(self, caption: str = '', icon: pygame.Surface = None) -> None:
         pygame.init()
         self.screen = pygame.display.set_mode((SCREENWIDTH, SCREENHEIGHT))
         pygame.display.set_caption(caption)
+        if icon: pygame.display.set_icon(icon)
         self.clock = pygame.time.Clock()
 
     def run(self) -> None:
@@ -27,5 +28,5 @@ class App:
 
 
 if __name__ == '__main__':
-    game = App('Game Jam')
+    game = App(caption='Game Jam', icon=pygame.image.load('..\\data\\amongus.png'))
     game.run()
