@@ -1,0 +1,5 @@
+import pygame
+import sys
+
+SCREENWIDTH, SCREENHEIGHT = 1080, 720
+FRAMERATE = 144
