@@ -1,4 +1,5 @@
 from globals import *
+from scene import Scene
 
 
 class App:
@@ -9,14 +10,16 @@ class App:
         if icon: pygame.display.set_icon(icon)
         self.clock = pygame.time.Clock()
 
+        self.Scene = Scene()
+
     def run(self) -> None:
         while True:
+            dt = self.clock.tick(FRAMERATE) / 1000
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.close()
-            self.screen.fill('lightblue')
+            self.Scene.update(dt)
             pygame.display.update()
-            dt = self.clock.tick(FRAMERATE)
 
     def close(self) -> None:
         pygame.quit()
@@ -24,5 +27,5 @@ class App:
 
 
 if __name__ == '__main__':
-    game = App(caption='Game Jam', icon=pygame.image.load('..\\data\\amongus.png'))
+    game = App(caption='Tubes Of Melody', icon=pygame.image.load('..\\data\\sprites\\notes\\note1vleugel.png'))
     game.run()
