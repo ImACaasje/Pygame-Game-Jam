@@ -1,5 +1,6 @@
 from globals import *
 from scene import Scene
+from organ import Organ
 
 
 class App:
@@ -11,6 +12,7 @@ class App:
         self.clock = pygame.time.Clock()
 
         self.Scene = Scene()
+        self.Organ = Organ(1)
 
     def run(self) -> None:
         while True:
@@ -18,6 +20,8 @@ class App:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.close()
+
+            self.Organ.update()
             self.Scene.update(dt)
             pygame.display.update()
 
