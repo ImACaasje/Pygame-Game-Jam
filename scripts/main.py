@@ -8,7 +8,8 @@ class App:
         pygame.init()
         self.screen = pygame.display.set_mode((SCREENWIDTH, SCREENHEIGHT))
         pygame.display.set_caption(caption)
-        if icon: pygame.display.set_icon(icon)
+        if icon:
+            pygame.display.set_icon(icon)
         self.clock = pygame.time.Clock()
 
         self.Scene = Scene()
@@ -21,8 +22,8 @@ class App:
                 if event.type == pygame.QUIT:
                     self.close()
 
-            self.Organ.update()
             self.Scene.update(dt)
+            self.Organ.update_tubes()
             pygame.display.update()
 
     def close(self) -> None:
