@@ -1,4 +1,5 @@
 from globals import *
+from tube import Tube
 
 
 class Organ:
@@ -12,6 +13,14 @@ class Organ:
                              'j': False,
                              'k': False}
 
+        self.tubes = {"A": Tube('A'),
+                 "B": Tube('B'),
+                 "C": Tube('C'),
+                 "D": Tube('D'),
+                 "E": Tube('E'),
+                 "F": Tube('F'),
+                 "G": Tube('G')}
+
         self.rects = []
 
     def input(self):
@@ -21,6 +30,8 @@ class Organ:
             if not self.keys_toggled['f']:
                 print('f pressed')
                 self.keys_toggled['f'] = True
+                self.tubes['A'].play_note()
+
         else:
             self.keys_toggled['f'] = False
 
@@ -28,6 +39,7 @@ class Organ:
             if not self.keys_toggled['g']:
                 print('g pressed')
                 self.keys_toggled['g'] = True
+                self.tubes['B'].play_note()
         else:
             self.keys_toggled['g'] = False
 
@@ -35,6 +47,7 @@ class Organ:
             if not self.keys_toggled['h']:
                 print('h pressed')
                 self.keys_toggled['h'] = True
+                self.tubes['C'].play_note()
         else:
             self.keys_toggled['h'] = False
 
@@ -42,6 +55,7 @@ class Organ:
             if not self.keys_toggled['j']:
                 print('j pressed')
                 self.keys_toggled['j'] = True
+                self.tubes['D'].play_note()
         else:
             self.keys_toggled['j'] = False
 
@@ -49,6 +63,7 @@ class Organ:
             if not self.keys_toggled['k']:
                 print('k pressed')
                 self.keys_toggled['k'] = True
+                self.tubes['E'].play_note()
         else:
             self.keys_toggled['k'] = False
 
