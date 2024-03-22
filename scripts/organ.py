@@ -7,65 +7,66 @@ class Organ:
         self.level = level
         self.screen = pygame.display.get_surface()
 
-        self.keys_toggled = {'f': False,
-                             'g': False,
-                             'h': False,
-                             'j': False,
-                             'k': False}
+        self.keys_toggled = {'F': False,
+                             'G': False,
+                             'H': False,
+                             'J': False,
+                             'K': False}
 
-        self.tubes = {"A": Tube('A'),
-                 "B": Tube('B'),
-                 "C": Tube('C'),
-                 "D": Tube('D'),
-                 "E": Tube('E'),
-                 "F": Tube('F'),
-                 "G": Tube('G')}
+        self.tubes = {"F": Tube('A', self.screen, 400, 450),
+                      "G": Tube('B', self.screen, 450, 450),
+                      "H": Tube('C', self.screen, 500, 450),
+                      "J": Tube('D', self.screen, 550, 450),
+                      "K": Tube('E', self.screen, 600, 450)}
 
         self.rects = []
 
-    def input(self):
+    def update_tubes(self):
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_f]:
-            if not self.keys_toggled['f']:
-                print('f pressed')
-                self.keys_toggled['f'] = True
-                self.tubes['A'].play_note()
+            if not self.keys_toggled['F']:
+                self.keys_toggled['F'] = True
+                self.tubes['F'].play_note()
 
         else:
-            self.keys_toggled['f'] = False
+            self.keys_toggled['F'] = False
 
         if keys[pygame.K_g]:
-            if not self.keys_toggled['g']:
-                print('g pressed')
-                self.keys_toggled['g'] = True
-                self.tubes['B'].play_note()
+            if not self.keys_toggled['G']:
+                self.keys_toggled['G'] = True
+                self.tubes['G'].play_note()
         else:
-            self.keys_toggled['g'] = False
+            self.keys_toggled['G'] = False
 
         if keys[pygame.K_h]:
-            if not self.keys_toggled['h']:
-                print('h pressed')
-                self.keys_toggled['h'] = True
-                self.tubes['C'].play_note()
+            if not self.keys_toggled['H']:
+                self.keys_toggled['H'] = True
+                self.tubes['H'].play_note()
         else:
-            self.keys_toggled['h'] = False
+            self.keys_toggled['H'] = False
 
         if keys[pygame.K_j]:
-            if not self.keys_toggled['j']:
-                print('j pressed')
-                self.keys_toggled['j'] = True
-                self.tubes['D'].play_note()
+            if not self.keys_toggled['J']:
+                self.keys_toggled['J'] = True
+                self.tubes['J'].play_note()
         else:
-            self.keys_toggled['j'] = False
+            self.keys_toggled['J'] = False
 
         if keys[pygame.K_k]:
-            if not self.keys_toggled['k']:
-                print('k pressed')
-                self.keys_toggled['k'] = True
-                self.tubes['E'].play_note()
+            if not self.keys_toggled['K']:
+                self.keys_toggled['K'] = True
+                self.tubes['K '].play_note()
         else:
-            self.keys_toggled['k'] = False
+            self.keys_toggled['K'] = False
 
-    def update(self):
-        self.input()
+        # // update all tubes
+        for tube_name, tube in self.tubes.items():
+            if self.keys_toggled[tube_name] is False:
+                state = 'inactive'
+            else:
+                state = 'active'
+
+            tube.draw_tube(state)
+
+

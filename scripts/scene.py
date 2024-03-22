@@ -13,7 +13,7 @@ class Scene:
 
         # test
         self.gsleutel = Sprite(pygame.transform.scale_by(self.textures['g-sleutel'], 10), (40, 200), self.all_sprites)
-        self.organ = Sprite(pygame.Surface((400, 300)), (SCREENWIDTH / 2, SCREENHEIGHT / 2), self.all_sprites)
+        # self.organ = Sprite(pygame.Surface((400, 300)), (SCREENWIDTH / 2, SCREENHEIGHT / 2), self.all_sprites)
 
     @staticmethod
     def setup() -> dict:

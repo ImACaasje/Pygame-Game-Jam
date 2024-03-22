@@ -2,7 +2,7 @@ import pygame
 from pygame.math import Vector2 as Vector
 import sys
 
-SCREENWIDTH, SCREENHEIGHT = 1080, 720
+SCREENWIDTH, SCREENHEIGHT = 1000, 700
 FRAMERATE = 144
 
 SPRITES = {'note1': '..\\data\\sprites\\notes\\note1.png',
